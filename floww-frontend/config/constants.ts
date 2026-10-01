@@ -1,4 +1,4 @@
-// Store API Paths Here
+// API PATHS 모음
 export const API_PATHS = Object.freeze({
     walletAuth: "/api/wallet-auth",
     tasks: "/api/tasks",
@@ -9,7 +9,7 @@ export const API_PATHS = Object.freeze({
     upstreamTasks: "/api/v1/tasks",
 });
 
-// Make it exactly the same as the status from server
+// 서버와 STATUS 맞추기
 export const WALLET_AUTH_ACTIONS = Object.freeze([
     "config",
     "health",
@@ -19,11 +19,13 @@ export const WALLET_AUTH_ACTIONS = Object.freeze([
     "logout",
 ] as const);
 
+// 세션 쿠키 이름들
 export const SESSION_COOKIE_NAMES = Object.freeze({
     challenge: "floww_wallet_challenge",
     session: "floww_wallet_session",
 });
 
+// 요청 Time Out
 export const REQUEST_LIMITS = Object.freeze({
     /** General BFF upstream request timeout. */
     timeoutMs: 30_000,
@@ -47,6 +49,7 @@ export const SUPPORTED_ASSET = Object.freeze({
     tokenDecimals: 6,
 });
 
+// 서버와 에러코드 맞추기
 export const API_ERROR_CODES = Object.freeze({
     taskConnectionNotConfigured: "TASK_CONNECTION_NOT_CONFIGURED",
     backendNotConfigured: "BACKEND_NOT_CONFIGURED",

@@ -8,6 +8,7 @@
 * Server
 * */
 
+// env에 있는 값을 Url 형식에 맞게 변경하고 Object로 내보내기
 function readOptionalUrl(name: string): string | undefined {
     const value = process.env[name]?.trim();
     if(!value) return undefined;
