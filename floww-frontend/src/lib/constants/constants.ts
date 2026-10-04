@@ -26,6 +26,10 @@ export const SESSION_COOKIE_NAMES = Object.freeze({
     mockState: "floww_mock_state",
 });
 
+export const COOKIE_MAX_AGE = Object.freeze({
+    challenge: 5 * 60,
+});
+
 // 요청 Time Out
 export const REQUEST_LIMITS = Object.freeze({
     /** General BFF upstream request timeout. */
