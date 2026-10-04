@@ -3,7 +3,7 @@
 *
 * 1. Floww 서버를 직접 부르지 않고, 서버 연결은 BFF(src/lib/server)가 맡는다.
 * 2. JWT(accessToken)는 BFF가 HttpOnly 쿠키에만 보관하므로 여기서 받는 응답에는 없다.
-* 3. 흐름: challenge → 지갑 서명 → verify → session
+* 3. 흐름: challenge → 지갑 서명 → verify → session (데모: demo → session)
 * */
 
 import { API_PATHS } from "../constants/constants";
@@ -29,5 +29,7 @@ export const wallet = {
     /** The BFF stores the JWT in an HttpOnly cookie; it is never returned here. */
     verify: (input: WalletVerifyRequest) =>
         apiRequest<WalletVerifyResponse>(walletAuthUrl("verify"), { method: "POST", body: input }),
+    /** MetaMask 없이 둘러보기 — BFF가 임시 키로 로그인하고 세션 쿠키만 남긴다 */
+    demo: () => apiRequest<WalletVerifyResponse>(walletAuthUrl("demo"), { method: "POST" }),
     logout: () => apiRequest<void>(walletAuthUrl("logout"), { method: "POST" }),
 };

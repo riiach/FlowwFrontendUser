@@ -17,6 +17,7 @@ export const WALLET_AUTH_ACTIONS = Object.freeze([
     "challenge",
     "verify",
     "logout",
+    "demo",
 ] as const);
 
 // 세션 쿠키 이름들
@@ -24,6 +25,10 @@ export const SESSION_COOKIE_NAMES = Object.freeze({
     challenge: "floww_wallet_challenge",
     session: "floww_wallet_session",
     mockState: "floww_mock_state",
+});
+
+export const COOKIE_MAX_AGE = Object.freeze({
+    challenge: 5 * 60,
 });
 
 // 요청 Time Out

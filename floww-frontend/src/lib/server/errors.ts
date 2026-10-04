@@ -15,6 +15,8 @@ const MESSAGES: Record<BffErrorCode, LocalizedMessage> = {
     INVALID_IDEMPOTENCY_KEY: { ko: "Idempotency-Key 형식이 올바르지 않습니다.", en: "Idempotency-Key is invalid." },
     SESSION_REQUIRED: { ko: "로그인이 필요합니다.", en: "Login is required." },
     NOT_IMPLEMENTED: { ko: "아직 지원하지 않는 기능입니다.", en: "Not implemented yet." },
+    CHALLENGE_REQUIRED: { ko: "로그인 요청이 만료되었습니다. 다시 시도해 주세요.", en: "Login challenge expired. Please try again." },
+    CHALLENGE_MISMATCH: { ko: "서명한 메시지가 요청한 메시지와 다릅니다.", en: "Signed message does not match the challenge." },
 };
 
 const RETRYABLE = new Set<BffErrorCode>(["UPSTREAM_UNAVAILABLE"]);

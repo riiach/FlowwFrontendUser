@@ -3,9 +3,10 @@ import "server-only";
 import type { UpstreamInit, UpstreamResponse } from "../upstream";
 import { matchPattern, mockError, type MockRoute } from "./http";
 import { cookieMockStateStore, type MockStateStore } from "./state";
+import { AUTH_ROUTES } from "./auth";
 
 /** 기능 이슈마다 서버와 같은 경로로 핸들러를 추가한다 */
-export const MOCK_ROUTES: MockRoute[] = [];
+export const MOCK_ROUTES: MockRoute[] = [...AUTH_ROUTES];
 
 export interface MockFetchOptions {
     store?: MockStateStore;

@@ -36,6 +36,8 @@ export type BffErrorCode =
     | "INVALID_INPUT"              // 요청 본문 형식 오류
     | "INVALID_IDEMPOTENCY_KEY"    // Idempotency-Key가 UUID가 아님
     | "SESSION_REQUIRED"           // 로그인 세션 쿠키 없음
+    | "CHALLENGE_REQUIRED"
+    | "CHALLENGE_MISMATCH"
     | "NOT_IMPLEMENTED";           // MVP 다음 단계 기능
 
 /**
