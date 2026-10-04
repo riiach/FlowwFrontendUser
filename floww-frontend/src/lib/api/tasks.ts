@@ -1,4 +1,4 @@
-import { API_PATHS, REQUEST_LIMITS } from "../config/constants";
+import { API_PATHS, REQUEST_LIMITS } from "../constants/constants";
 import type {
     AIProposalResponse,
     CreateAttemptRequest,

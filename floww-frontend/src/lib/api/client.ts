@@ -1,4 +1,4 @@
-import { API_ERROR_CODES, REQUEST_LIMITS } from "../config/constants";
+import { API_ERROR_CODES, REQUEST_LIMITS } from "../constants/constants";
 
 /** Error returned by the same-origin BFF. */
 export class ApiError extends Error {

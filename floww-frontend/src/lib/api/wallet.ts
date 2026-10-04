@@ -1,4 +1,4 @@
-import { API_PATHS } from "../config/constants";
+import { API_PATHS } from "../constants/constants";
 import type {
     WalletAuthConfig,
     WalletAuthHealth,
