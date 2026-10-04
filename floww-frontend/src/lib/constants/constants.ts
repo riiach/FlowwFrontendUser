@@ -17,6 +17,7 @@ export const WALLET_AUTH_ACTIONS = Object.freeze([
     "challenge",
     "verify",
     "logout",
+    "demo",
 ] as const);
 
 // 세션 쿠키 이름들

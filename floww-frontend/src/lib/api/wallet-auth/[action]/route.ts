@@ -23,12 +23,13 @@ import {
     UpstreamResponseError,
     verifySignin,
 } from "@/lib/server/wallet-auth";
+import { demoLogin } from "@/lib/server/demo-login";
 
 /**
  * 지갑 로그인 BFF (브라우저 ↔ BFF)
  *
  * GET  config · health · session
- * POST challenge · verify · logout
+ * POST challenge · verify · demo · logout
  *
  * accessToken(JWT)은 암호화된 HttpOnly 세션 쿠키에만 있고 응답 본문에는 절대 넣지 않는다.
  */
@@ -115,6 +116,18 @@ async function verify(request: NextRequest): Promise<NextResponse> {
     return response;
 }
 
+/** 임시 키로 서버 로그인 → 세션 쿠키. 키는 demoLogin 안에서 폐기된다 */
+async function demo(request: NextRequest): Promise<NextResponse> {
+    assertWalletAuthEnabled();
+    await assertEmptyBody(request);
+    const { session: serverSession, isNewUser } = await demoLogin();
+
+    const body: WalletVerifyResponse = { session: toWalletSession(serverSession), isNewUser };
+    const response = NextResponse.json(body);
+    setSessionCookie(response, serverSession);
+    return response;
+}
+
 /** 세션·challenge 쿠키 삭제 */
 async function logout(request: NextRequest): Promise<NextResponse> {
     await assertEmptyBody(request);
@@ -129,7 +142,7 @@ async function logout(request: NextRequest): Promise<NextResponse> {
  * ────────────────────────────────────────────── */
 
 const GET_ACTIONS: Record<string, Handler> = { config, health, session };
-const POST_ACTIONS: Record<string, Handler> = { challenge, verify, logout };
+const POST_ACTIONS: Record<string, Handler> = { challenge, verify, demo, logout };
 
 function toWalletAuthError(error: unknown): NextResponse {
     if (error instanceof UpstreamResponseError) return NextResponse.json(error.body, { status: error.status });
