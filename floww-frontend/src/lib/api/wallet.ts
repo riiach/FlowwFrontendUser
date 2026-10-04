@@ -16,7 +16,6 @@ import type {
     WalletVerifyRequest,
     WalletVerifyResponse,
 } from "../types";
-
 import { apiRequest } from "./client";
 
 const walletAuthUrl = (action: string) => `${API_PATHS.walletAuth}/${action}`;

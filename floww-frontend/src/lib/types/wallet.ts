@@ -1,3 +1,5 @@
+import type { ServerErrorResponse } from "./api";
+
 /**
  * 지갑 로그인 타입.
  *
@@ -139,3 +141,17 @@ export interface WalletVerifyResponse {
     session: WalletSession;
     isNewUser: boolean;
 }
+
+/** 지갑 로그인 API가 돌려주는 사유 코드 (ErrorCode.java) */
+export type WalletAuthErrorCode =
+    | "INVALID_INPUT"        // 400 키 개수·주소·서명 형식이 틀림
+    | "CHAIN_NOT_SUPPORTED"  // 400 허용되지 않은 chainId
+    | "NONCE_INVALID"        // 401 없는 nonce이거나 이미 사용됨
+    | "NONCE_EXPIRED"        // 401 5분 지남
+    | "MESSAGE_MISMATCH"     // 401 서명한 메시지가 발급한 메시지와 다름
+    | "SIGNATURE_INVALID"    // 401 서명 주소가 요청 주소와 다름
+    | "USER_SUSPENDED"       // 403 정지된 사용자
+    | "TOO_MANY_REQUESTS";   // 429 요청이 너무 많음 (retryable: true)
+
+/** 지갑 로그인 에러 응답 (서버 → BFF) */
+export type WalletAuthErrorResponse = ServerErrorResponse<WalletAuthErrorCode>;
