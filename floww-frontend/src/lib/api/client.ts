@@ -13,6 +13,21 @@ export class ApiError extends Error {
     }
 }
 
+/** ErrorResponse 본문: reasonCode를 먼저 읽고, message는 { ko, en } 중 ko를 쓴다 */
+function toApiError(status: number, data: unknown): ApiError {
+    const body = isRecord(data) ? data : {};
+    const reasonCode = typeof body.reasonCode === "string" ? body.reasonCode : undefined;
+    const code = reasonCode ?? (typeof body.code === "string" ? body.code : undefined);
+    const localized = isRecord(body.message) ? body.message : undefined;
+    const message =
+        typeof localized?.ko === "string"
+            ? localized.ko
+            : typeof body.message === "string"
+                ? body.message
+                : code ?? `Request failed (${status})`;
+    return new ApiError(message, status, code);
+}
+
 export interface ApiRequestOptions extends Omit<RequestInit, "body" | "method"> {
     method?: "GET" | "POST";
     body?: unknown;
@@ -59,10 +74,7 @@ export async function apiRequest<T>(path: string, options: ApiRequestOptions = {
         });
         const data = await readResponseBody(response);
         if (!response.ok) {
-            const errorBody = isRecord(data) ? data : {};
-            const code = typeof errorBody.code === "string" ? errorBody.code : undefined;
-            const message = typeof errorBody.message === "string" ? errorBody.message : code ?? `Request failed (${response.status})`;
-            throw new ApiError(message, response.status, code);
+            throw toApiError(response.status, data);
         }
         return data as T;
     } catch (error) {
