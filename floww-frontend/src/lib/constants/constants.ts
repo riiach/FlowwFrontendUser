@@ -23,6 +23,7 @@ export const WALLET_AUTH_ACTIONS = Object.freeze([
 export const SESSION_COOKIE_NAMES = Object.freeze({
     challenge: "floww_wallet_challenge",
     session: "floww_wallet_session",
+    mockState: "floww_mock_state",
 });
 
 // 요청 Time Out
