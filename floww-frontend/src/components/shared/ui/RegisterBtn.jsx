@@ -2,9 +2,12 @@
 
 import React from 'react'
 
-const RegisterBtn = ({children, w, h}) => {
+const RegisterBtn = ({ children, className = '', ...props }) => {
   return (
-    <button className={`primary-btn w-${w} h-${h} rounded-2xl`}>
+    <button
+        className={`primary-btn ${className}`.trim()}
+        {...props}
+    >
         {children}
     </button>
   )
