@@ -5,7 +5,7 @@ import React from 'react'
 const GlassCard = ({ children, className = '', ...props }) => {
     return (
         <div
-            className={`glass-card ${className}`.trim()}
+            className={`glass-card card ${className} p-4 rounded-2xl`.trim()}
             {...props}
         >
             {children}
