@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { WalletProvider } from "@/providers/WalletProvider";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
+import "../styles/hover-animations.css"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

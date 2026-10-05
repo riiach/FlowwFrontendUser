@@ -1,12 +1,14 @@
 "use client"
 
+import "@/styles/login-components.css";
 import React, { useState, useEffect } from "react";
 
 import StepIndicatorDots from "@/components/shared/ui/StepIndicatorDots"
 import StepIndicatorBar from "@/components/shared/ui/StepIndicatorBar"
 import StepIndicator from "@/components/shared/ui/StepIndicator";
 import Logo from "@/components/brand/Logo";
-import GlassCard from "@/components/shared/ui/cards/GlassCard"
+import GlassCard from "@/components/shared/ui/cards/GlassCard";
+import { EmailIcon } from "@/components/shared/icons/AnimatedIcons"
 
 export default function LoginPage() {
     const [currentStep, setCurrentStep] = useState(1);
@@ -40,6 +42,10 @@ export default function LoginPage() {
             </GlassCard>
             <button onClick={handleNextStep} className="w-auto h-12 bg-white hover:bg-yellow-400">
                 Click
+            </button>
+            <button type="button" className="option">
+                <EmailIcon />
+                <span>Continue with email</span>
             </button>
         </div>
     )
