@@ -97,6 +97,12 @@ body {
   backdrop-filter: blur(18px);
 }
 
+.glass-card:hover {
+  border-color: #e3e3e3;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 10px 32px rgba(20, 20, 20, 0.07);
+}
+
 .step-content {
   animation: step-enter 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
