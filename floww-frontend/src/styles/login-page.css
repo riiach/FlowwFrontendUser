@@ -139,7 +139,14 @@
   .login-screen { position:relative; background:#102b35; }
   .login-screen > div:first-child { display:none; }
   .mobile-auth-experience { position:fixed; z-index:50; inset:0; display:block; overflow:hidden; background:linear-gradient(180deg,rgba(3,21,29,.28),rgba(3,21,29,.64)),url('/navi-blue-flower-dots.png') center/cover no-repeat; }
-  .mobile-auth-experience--welcome { background:linear-gradient(180deg,rgba(3,21,29,.28),rgba(3,21,29,.64)),url('/navi-chiffon-dots.png') center/cover no-repeat; }
+  .mobile-auth-experience--welcome { background: transparent; }
+  .mobile-auth-experience--welcome::before { position:absolute; inset:-3%; z-index:0; background:linear-gradient(180deg,rgba(3,21,29,.28),rgba(3,21,29,.64)),url('/navi-chiffon-dots.png') center/cover no-repeat; content:""; will-change:transform; animation:welcome-background-drift 24s ease-in-out infinite alternate; }
+  .mobile-auth-screen--welcome { z-index:1; }
+  @keyframes welcome-background-drift {
+    from { transform:translate3d(-.35%,.2%,0) scale(1.035) rotate(-.12deg); }
+    to { transform:translate3d(.35%,-.2%,0) scale(1.055) rotate(.12deg); }
+  }
+  @media (prefers-reduced-motion: reduce) { .mobile-auth-experience--welcome::before { animation:none; transform:scale(1.04); } }
   .mobile-auth-screen { position:absolute; inset:12px; display:flex; flex-direction:column; justify-content:space-between; overflow-y:auto; padding:clamp(22px,6vw,34px); border:1px solid rgba(255,255,255,.34); border-radius:30px; animation:mobile-auth-enter 560ms cubic-bezier(.2,.8,.2,1) both; }
   .mobile-auth-screen--welcome { border-color:transparent; background:transparent; color:#fff; backdrop-filter:none; }
   .mobile-auth-screen--signin,.mobile-auth-screen--signup,.mobile-auth-screen--signup-method,.mobile-auth-screen--wallet,.mobile-auth-screen--wallet-connecting,.mobile-auth-screen--wallet-connected,.mobile-auth-screen--email,.mobile-auth-screen--code,.mobile-auth-screen--complete { background:rgba(255,255,255,.94); color:#141414; box-shadow:0 20px 70px rgba(0,0,0,.18); backdrop-filter:blur(24px); }
