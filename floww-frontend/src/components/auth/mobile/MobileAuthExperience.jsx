@@ -50,7 +50,7 @@ function MobileAuthExperience({ logoSrc = '/floww_logo.png', demoVerificationCod
     return () => window.clearTimeout(timer)
   }, [mode, retrySeconds])
 
-  return <div className="mobile-auth-experience" aria-label="Floww mobile sign in">
+  return <div className={`mobile-auth-experience mobile-auth-experience--${mode}`} aria-label="Floww mobile sign in">
     <MobileAuthBackgroundCard key={mode} className={`mobile-auth-screen--${mode}`}>
       {mode === 'welcome' ? <MobileWelcomeScreen onLogin={startLogin} onSignup={startSignup} /> : <div className="mobile-auth-form-content">
         <MobileAuthTopBar logoSrc={logoSrc} onBack={home} />
