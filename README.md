@@ -99,9 +99,9 @@ For API contracts and implementation details, see [Floww_Server](https://github.
 <img width="2430" height="2294" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/0129e077-a4cd-4a90-af72-249b50f29ebf" />
 
 
-## 📚 Further Reading
+## 📚 Further Reading about this Project
 
-A few articles I found useful for learning about AI Agent wallets, permissions, and approvals:
+Blog posts I wrote on this project:
 
 - [Step Indicator Tutorial](https://riachoi-services.vercel.app/blog/frontend-step-indicator-tutorial)
 
