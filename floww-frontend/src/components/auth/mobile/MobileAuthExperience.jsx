@@ -55,7 +55,7 @@ function MobileAuthExperience({ logoSrc = '/floww_logo.png', demoVerificationCod
       {mode === 'welcome' ? <MobileWelcomeScreen onLogin={startLogin} onSignup={startSignup} /> : <div className="mobile-auth-form-content">
         <MobileAuthTopBar logoSrc={logoSrc} onBack={home} />
         {mode === 'signup-method' ? <SignupMethodScreen onWallet={() => to('wallet')} onEmail={() => to('email')} onStripe={() => { setOauthProvider('Stripe'); to('oauth-connecting') }} onGoogle={() => { setOauthProvider('Google'); to('oauth-connecting') }} />
-          : mode === 'email' ? <EmailEntryScreen intent={intent} name={name} email={email} onNameChange={setName} onEmailChange={setEmail} onSubmit={sendCode} onStripe={() => { setOauthProvider('Stripe'); to('oauth-connecting') }} onGoogle={() => { setOauthProvider('Google'); to('oauth-connecting') }} />
+          : mode === 'email' ? <EmailEntryScreen intent={intent} name={name} email={email} demoCode={demoVerificationCode} onNameChange={setName} onEmailChange={setEmail} onSubmit={sendCode} onStripe={() => { setOauthProvider('Stripe'); to('oauth-connecting') }} onGoogle={() => { setOauthProvider('Google'); to('oauth-connecting') }} />
           : mode === 'code' ? <CodeVerificationScreen email={email} code={code} onChange={verifyCode} demoCode={demoVerificationCode} notice={notice} retrySeconds={retrySeconds} onResend={() => { setCode(''); setRetrySeconds(60); setNotice('A new verification code has been sent.') }} />
           : ['wallet', 'wallet-connecting', 'wallet-connected'].includes(mode) ? <WalletConnectScreen mode={mode} onConnect={() => to('wallet-connecting')} onContinue={() => to('complete')} />
           : mode === 'oauth-connecting' ? <ConnectionProgressScreen provider={oauthProvider} />
