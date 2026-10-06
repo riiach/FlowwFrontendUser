@@ -327,3 +327,17 @@
   .mobile-auth-screen--welcome .promo-card-content h1 { font-size: clamp(28px, 7.5vw, 36px); }
   .mobile-auth-screen--welcome .promo-card-description { max-width: 38ch; margin: 10px auto 18px; font-size: 13px; }
 }
+
+/* Center both logo rows on the mobile welcome screen. */
+@media (max-width: 767px) {
+  .mobile-auth-screen--welcome .promo-assets {
+    width: 100%;
+    align-items: center;
+  }
+
+  .mobile-auth-screen--welcome .promo-assets-row,
+  .mobile-auth-screen--welcome .promo-payment-logos {
+    width: 100%;
+    justify-content: center;
+  }
+}

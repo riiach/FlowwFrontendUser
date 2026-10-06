@@ -1,91 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Floww Frontend ✨
 
-## Task API flow (issues #8–#12)
+> A portfolio frontend for **Floww**, the AI Agent Blockchain Wallet project our team built at **GWDC HACKATHON 26**. I’m rebuilding the frontend as a standalone project to keep learning and exploring. 🛍️🤖🔗
 
-The browser uses same-origin BFF routes: `POST /api/chat/draft`, `POST/GET /api/tasks`,
-`GET /api/tasks/:taskId`, `POST /api/tasks/:taskId/quotes`, `POST /api/tasks/:taskId/attempts`,
-`POST /api/tasks/:taskId/ai-proposal`, and `GET /api/tasks/:taskId/events?after=0&limit=50`.
-Each requires the encrypted wallet session; mutations also require the same origin.
+## 🌐 Live Preview
 
-- Draft requests forward exactly `{ conversation: [{ role, content }] }`. The response
-  preserves the AI envelope and adds `createTask` (null unless ready and valid) and
-  `conversionIssues`. Conversations stay in component memory, outside Query caches,
-  cookies, logs and browser storage. `useChatDraft.reset()` clears the draft as well.
-- Amounts are integer strings. fUSDC has six decimals; deadlines must be absolute,
-  future times within 30 days. Only the two demo catalog items are supported.
-- `useCreateTask` persists one Idempotency-Key per wallet and input in sessionStorage.
-  Storage failures fall back to the same key while the page remains open.
-- Task details poll every five seconds until terminal. Event polling starts at the
-  last numeric cursor, merges sequences without duplicates, drains remaining pages
-  and fetches once more when the Task becomes terminal.
-- User attempts forward exactly `{ quoteId, proposedBy: "USER" }`; AI proposals send
-  no body and have a 120-second timeout. No payment is executed by these endpoints.
-- Mock state remains in an encrypted, compressed visitor cookie. Older tasks are
-  evicted when its 4KB budget is exceeded; mock mode is for a single-browser demo,
-  not durable or concurrent production storage.
+- **Production:** [https://floww-frontend.vercel.app](https://floww-frontend.vercel.app)
+- Vercel Deployment Protection is currently enabled, so Vercel authentication may be required to view the site.
+- Deployment details: [Vercel project](https://vercel.com/riiachs-projects/floww-frontend)
 
-Contracts were checked against `web5five/Floww_Server` commit
-`f729b0efc442514262f0ca108ab444aba841cccd` (`TaskViews`, `TaskInputs`,
-`TaskService`, `TaskPolicy` and `AiTaskProposalService`). Multiple attempts are allowed
-while AWAITING_APPROVAL, with at most five attempts; a denial ends the Task only
-after that limit or denial of every live quote. AI reuses an existing allowed AI
-attempt for the selected quote.
+## 👋 Project Status
 
-For local mock verification, configure `FLOWW_UPSTREAM=mock` and
-`FLOWW_SESSION_SECRET` as a random 64-character hex value, then run the app.
-Do not commit the secret. The script signs in using the existing demo endpoint,
-keeps cookies only in memory and prints no credentials or conversation bodies:
+The **AUTH page** is implemented so far, including the Sign in / Sign up and verification UI flows. You can explore the screens for choosing an authentication method, email and wallet verification, and confirmation.
 
-```bash
-node scripts/api-check.mjs all
-node scripts/api-check.mjs draft
-node scripts/api-check.mjs task
-node scripts/api-check.mjs quotes
-node scripts/api-check.mjs policy
-node scripts/api-check.mjs events
-npx vitest run
-npx tsc --noEmit
-npm run lint
-npm run build
-```
+The dashboard and AI Chat screens are not implemented yet. For now, this project focuses on refining the authentication experience and frontend structure. Connecting real sign-in and wallet authentication also requires backend and provider configuration.
 
-`FLOWW_CHECK_ORIGIN` overrides http://localhost:3000. For an already authenticated
-Preview session, supply `FLOWW_CHECK_COOKIE` through your local environment.
-The full assertions target the deterministic mock catalog. Production AI draft
-requests may return 503 `PROVIDER_NOT_CONFIGURED`; use mock or a configured Preview
-to test draft generation.
+## 🏁 The Hackathon and Floww
 
-## Getting Started
+One of the GWDC HACKATHON 26 challenges was **“Build a Financial Service Powered by AI Agents and Blockchain.”** Our team built **Floww**, a shopping service that uses an AI Agent and a blockchain wallet to propose shopping tasks for users to review and approve. The server side includes flows for task drafts, quotes, user approvals, and AI proposals. 🧾
 
-First, run the development server:
+- [GWDC HACKATHON 2026 challenge brief](https://www.gwdc.net/hackathon.html)
+- [Floww server repository](https://github.com/web5five/Floww_Server)
+- [Floww frontend repository](https://github.com/riiach/FlowwFrontendUser)
+
+## 💭 Why I Rebuilt the Frontend
+
+I wanted to understand more deeply how a wallet and a frontend pass transaction steps between each other. Revisiting our hackathon idea as a standalone interface is also a chance for me to build my knowledge and hands-on experience with dashboard and AI Chat frontends.
+
+Breaking the interface into small components and connecting them into an authentication flow is part of the learning process, too. I’ll keep adding to this README as the project grows. 🌱
+
+## 🧰 Tech Stack
+
+- **Next.js 16** · App Router
+- **React 19** · TypeScript
+- **Tailwind CSS 4** and component-specific CSS
+- **wagmi / RainbowKit / viem / ethers** · EVM wallet connectivity
+- **React Hook Form / Zod** · Forms and input validation
+- **Vitest / Playwright** · Testing tools
+
+## 🚀 Run Locally
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The development server runs at [http://localhost:3000](http://localhost:3000) by default.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To connect to the backend, create a local `.env.local` file using `.env.example` as a reference, then add values for your environment. Never commit secrets. The default configuration uses the HTTP backend, so configure `FLOWW_API_BASE_URL` and the session settings. To try the mock server, set `FLOWW_UPSTREAM=mock` and use a random 64-character hexadecimal value for `FLOWW_SESSION_SECRET`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+Other commands:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+npm test
+npx tsc --noEmit
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🗂️ Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+src/
+├── app/
+│   ├── (auth)/login/       # Login route
+│   ├── api/                # Frontend BFF API routes
+│   └── page.tsx            # Main entry point: currently the AUTH screen
+├── components/
+│   ├── auth/               # Auth page and smaller UI components
+│   ├── brand/              # Floww logo and brand elements
+│   └── shared/             # Components shared across screens
+├── lib/
+│   ├── auth/               # Authentication logic
+│   ├── hooks/              # Reusable React hooks
+│   ├── server/             # Server config, BFF, and upstream logic
+│   ├── types/               # Shared types
+│   └── ...
+├── providers/              # App-wide providers
+└── styles/                 # Global, page, and component styles
+public/                     # Logos, images, and other static assets
+scripts/                    # API check scripts
+```
 
-## Deploy on Vercel
+## 🔌 Server API Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The browser calls same-origin BFF routes. Main endpoints include `POST /api/chat/draft`, `POST/GET /api/tasks`, `GET /api/tasks/:taskId`, `POST /api/tasks/:taskId/quotes`, `POST /api/tasks/:taskId/attempts`, `POST /api/tasks/:taskId/ai-proposal`, and `GET /api/tasks/:taskId/events`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Amounts are sent as integer strings, and fUSDC uses six decimal places. An AI proposal may reuse an existing allowed attempt. **These API flows do not execute payments.** The mock server is for a single-browser demo and is not durable or designed for concurrent use.
+
+For API contracts and implementation details, see [Floww_Server](https://github.com/web5five/Floww_Server) and the existing project documentation.
+
+## 📚 Further Reading
+
+A few articles I found useful for learning about AI Agent wallets, permissions, and approvals:
+
+- [How to give an AI agent a crypto wallet (safely) — Rapid Innovation](https://www.rapidinnovation.io/post/give-ai-agent-crypto-wallet-safely)
+- [AI agents with a wallet: what they can spend, and what stops them — Coin98](https://blog.coin98.com/blog/ai-agents-with-a-wallet-what-they-can-spend-and-what-stops-them/)
+- [GWDC HACKATHON 2026 — Official challenge brief](https://www.gwdc.net/hackathon.html)
+
+---
+
+A personal portfolio project in progress. Feedback is always welcome! 💌
