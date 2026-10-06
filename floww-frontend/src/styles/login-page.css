@@ -138,7 +138,7 @@
 @media (max-width:767px) {
   .login-screen { position:relative; background:#102b35; }
   .login-screen > div:first-child { display:none; }
-  .mobile-auth-experience { position:fixed; z-index:50; inset:0; display:block; overflow:hidden; background:linear-gradient(180deg,rgba(3,21,29,.28),rgba(3,21,29,.64)),url('/navi-blue-flower-dots.png') center/cover no-repeat; }
+  .mobile-auth-experience { position:fixed; z-index:50; inset:0; display:block; overflow:hidden; background:linear-gradient(180deg,rgba(3,21,29,.28),rgba(3,21,29,.64)),url('/navi-chiffon-dots.png') center/cover no-repeat; }
   .mobile-auth-experience--welcome { background: transparent; }
   .mobile-auth-experience--welcome::before { position:absolute; inset:-3%; z-index:0; background:linear-gradient(180deg,rgba(3,21,29,.28),rgba(3,21,29,.64)),url('/navi-chiffon-dots.png') center/cover no-repeat; content:""; will-change:transform; animation:welcome-background-drift 24s ease-in-out infinite alternate; }
   .mobile-auth-screen--welcome { z-index:1; }
