@@ -2,19 +2,19 @@
 
 /* Step indicators */
 .step-indicator-dots { display:flex; align-items:center; gap:7px; }
-.step-indicator-dot { display:grid; width:24px; height:24px; flex:none; place-items:center; border:1px solid #ececec; border-radius:50%; background:#fff; color:#bdbdbd; font-size:10px; font-weight:600; transition:all var(--motion); }
-.step-indicator-dot.is-current { border-color:#d9d9d9; color:#666; box-shadow:0 1px 2px rgba(0,0,0,.035),inset 0 1px 2px rgba(255,255,255,.95); }
-.step-indicator-dot.is-complete { border-color:#f1f1f1; background:#fafafa; color:#d0d0d0; }
+.step-indicator-dot { display:grid; width:24px; height:24px; flex:none; place-items:center; border:1px solid var(--outline); border-radius:50%; background:var(--white); color:var(--text-disabled); font-size:10px; font-weight:600; transition:all var(--motion); }
+.step-indicator-dot.is-current { border-color:var(--outline); color:var(--gray); box-shadow:0 1px 2px var(--surface-tint),inset 0 1px 2px var(--glass-fill-strong); }
+.step-indicator-dot.is-complete { border-color:var(--surface-hover); background:var(--surface-hover); color:var(--text-disabled); }
 .step-progress { width:120px; }
-.step-progress-copy { display:flex; justify-content:space-between; margin-bottom:6px; color:#929292; font-size:10px; }
-.step-progress-track { height:4px; overflow:hidden; border-radius:99px; background:#f0f0f0; }
-.step-progress-fill { display:block; height:100%; border-radius:inherit; background:#d3d3d3; transition:width var(--motion); }
+.step-progress-copy { display:flex; justify-content:space-between; margin-bottom:6px; color:var(--text-muted); font-size:10px; }
+.step-progress-track { height:4px; overflow:hidden; border-radius:99px; background:var(--surface-hover); }
+.step-progress-fill { display:block; height:100%; border-radius:inherit; background:var(--outline); transition:width var(--motion); }
 
 /* Wallet and envelope icons animate when their parent action is hovered. */
 .wallet-opening-icon,.envelope-opening-icon { width:24px; height:24px; overflow:visible; }
 .wallet-opening-icon__card { transform:translateY(0); transition:transform 550ms cubic-bezier(.2,.8,.2,1); }
 .wallet-opening-icon:hover .wallet-opening-icon__card,.wallet-option:hover .wallet-opening-icon__card,.option:hover .wallet-opening-icon__card { transform:translateY(-3px); }
-.envelope-opening-icon__flap { fill:#fff; stroke:none; transform-box:view-box; transform-origin:12px 7px; transition:transform 550ms cubic-bezier(.2,.8,.2,1); }
+.envelope-opening-icon__flap { fill:var(--white); stroke:none; transform-box:view-box; transform-origin:12px 7px; transition:transform 550ms cubic-bezier(.2,.8,.2,1); }
 .envelope-opening-icon:hover .envelope-opening-icon__flap,.email-option:hover .envelope-opening-icon__flap,.option:hover .envelope-opening-icon__flap { transform:scaleY(-1); }
 
 /* Connecting dots and session check spinner */
@@ -25,24 +25,24 @@
 .connecting-dots__wave i:nth-child(3) { animation-delay:320ms; }
 @keyframes connecting-dot-wave { 0%,60%,100% { transform:translateY(0); } 30% { transform:translateY(-4px); } }
 .session-loading { display:grid; justify-items:center; gap:12px; padding:48px 12px; text-align:center; }
-.session-loading__spinner { width:56px; height:56px; margin-bottom:8px; border:3px solid #e3e3e3; border-top-color:#777; border-radius:50%; animation:session-spin 1s linear infinite; }
+.session-loading__spinner { width:56px; height:56px; margin-bottom:8px; border:3px solid var(--outline); border-top-color:var(--text-muted); border-radius:50%; animation:session-spin 1s linear infinite; }
 @keyframes session-spin { to { transform:rotate(360deg); } }
-.session-loading p { margin:0; color:#777; font-size:14px; line-height:1.6; }
+.session-loading p { margin:0; color:var(--text-muted); font-size:14px; line-height:1.6; }
 
 /* Mobile glass action button */
-.glass-btn { display:inline-flex; min-height:48px; align-items:center; justify-content:center; gap:8px; padding:0 18px; border:1px solid rgba(230,230,230,.9); border-radius:14px; background:rgba(255,255,255,.58); color:#333; font:inherit; cursor:pointer; backdrop-filter:blur(16px); transition:background 650ms cubic-bezier(.2,.8,.2,1),border-color 650ms cubic-bezier(.2,.8,.2,1),box-shadow 650ms cubic-bezier(.2,.8,.2,1),color 650ms cubic-bezier(.2,.8,.2,1); }
-.glass-btn:hover { border-color:#e3e3e3; background:rgba(255,255,255,.88); box-shadow:0 3px 10px rgba(0,0,0,.04); }
-.glass-btn:active { background:rgba(255,255,255,.94); }
-.glass-btn:focus-visible { outline:2px solid #777; outline-offset:3px; }
+.glass-btn { display:inline-flex; min-height:48px; align-items:center; justify-content:center; gap:8px; padding:0 18px; border:1px solid var(--outline); border-radius:14px; background:var(--glass-fill); color:var(--gray); font:inherit; cursor:pointer; backdrop-filter:blur(16px); transition:background 650ms cubic-bezier(.2,.8,.2,1),border-color 650ms cubic-bezier(.2,.8,.2,1),box-shadow 650ms cubic-bezier(.2,.8,.2,1),color 650ms cubic-bezier(.2,.8,.2,1); }
+.glass-btn:hover { border-color:var(--outline); background:var(--white-text); box-shadow:0 3px 10px var(--surface-tint); }
+.glass-btn:active { background:var(--glass-fill-strong); }
+.glass-btn:focus-visible { outline:2px solid var(--text-muted); outline-offset:3px; }
 .glass-btn:disabled { cursor:not-allowed; opacity:.55; }
 
 /* White, frosted backdrop used on mobile auth screens; separate from GlassCard. */
-.mobile-glass-backdrop { position:relative; overflow:hidden; border:1px solid rgba(255,255,255,.58); border-radius:30px; background:rgba(255,255,255,.94); color:#141414; box-shadow:0 20px 70px rgba(0,0,0,.14); backdrop-filter:blur(24px); }
+.mobile-glass-backdrop { position:relative; overflow:hidden; border:1px solid var(--glass-fill); border-radius:30px; background:var(--glass-fill-strong); color:var(--foreground); box-shadow:0 20px 70px var(--shadow); backdrop-filter:blur(24px); }
 
 /* Desktop image landscape with a glass overlay layer. */
-.desktop-landscape-panel { position:relative; isolation:isolate; display:flex; min-width:0; min-height:320px; flex-direction:column; justify-content:space-between; overflow:hidden; padding:clamp(20px,2.2vw,30px); border:1px solid rgba(255,255,255,.28); border-radius:30px; background:rgba(255,255,255,.12); box-shadow:0 16px 45px rgba(0,0,0,.12); }
+.desktop-landscape-panel { position:relative; isolation:isolate; display:flex; min-width:0; min-height:320px; flex-direction:column; justify-content:space-between; overflow:hidden; padding:clamp(20px,2.2vw,30px); border:1px solid var(--glass-edge); border-radius:30px; background:var(--glass-fill-soft); box-shadow:0 16px 45px var(--shadow); }
 .desktop-landscape-panel__image { position:absolute; z-index:-2; inset:0; background-image:var(--landscape-image); background-position:center; background-size:cover; }
-.desktop-landscape-panel__glass { position:absolute; z-index:-1; inset:0; border:1px solid rgba(255,255,255,.28); border-radius:inherit; background:rgba(255,255,255,.18); backdrop-filter:blur(3px); pointer-events:none; }
+.desktop-landscape-panel__glass { position:absolute; z-index:-1; inset:0; border:1px solid var(--glass-edge); border-radius:inherit; background:var(--glass-fill-soft); backdrop-filter:blur(3px); pointer-events:none; }
 .desktop-landscape-panel__content { position:relative; z-index:1; }
 
 @media (max-width:767px) {

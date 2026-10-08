@@ -1,10 +1,10 @@
 /* Transparent glass card, transparent button, and gray card styles */
-.glass-card { border: 1px solid rgba(230,230,230,.9); border-radius: 18px; background: rgba(255,255,255,.74); box-shadow: 0 8px 28px rgba(20,20,20,.045); backdrop-filter: blur(18px); }
-.transparent-button { border: 1px solid rgba(230,230,230,.9); border-radius: 14px; background: rgba(255,255,255,.58); color: #333; cursor: pointer; transition: background 650ms cubic-bezier(.2,.8,.2,1),border-color 650ms cubic-bezier(.2,.8,.2,1),box-shadow 650ms cubic-bezier(.2,.8,.2,1); }
-.transparent-button:hover { border-color: #e3e3e3; background: rgba(255,255,255,.88); box-shadow: 0 3px 10px rgba(0,0,0,.04); }
-.gray-card { border: 1px solid #ededed; border-radius: 18px; background: #f7f7f7; }
+.glass-card { border: 1px solid var(--outline); border-radius: 18px; background: var(--glass-fill); box-shadow: 0 8px 28px var(--surface-tint); backdrop-filter: blur(18px); }
+.transparent-button { border: 1px solid var(--outline); border-radius: 14px; background: var(--glass-fill); color: var(--gray); cursor: pointer; transition: background 650ms cubic-bezier(.2,.8,.2,1),border-color 650ms cubic-bezier(.2,.8,.2,1),box-shadow 650ms cubic-bezier(.2,.8,.2,1); }
+.transparent-button:hover { border-color: var(--outline); background: var(--white-text); box-shadow: 0 3px 10px var(--surface-tint); }
+.gray-card { border: 1px solid var(--outline); border-radius: 18px; background: var(--surface-hover); }
 .complete-card { display: flex; align-items: center; gap: 14px; margin-top: 26px; padding: 18px; }
 .complete-card strong { display: block; font-size: 14px; }
-.complete-card small { display: block; margin-top: 4px; color: #777; font-size: 12px; }
-.check-tile { display: grid; width: 40px; height: 40px; flex: none; place-items: center; border: 1px solid #e8e8e8; border-radius: 12px; background: #fff; color: #111; }
+.complete-card small { display: block; margin-top: 4px; color: var(--text-muted); font-size: 12px; }
+.check-tile { display: grid; width: 40px; height: 40px; flex: none; place-items: center; border: 1px solid var(--outline); border-radius: 12px; background: var(--white); color: var(--foreground); }
 .check-tile svg { width: 20px; height: 20px; }

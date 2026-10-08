@@ -1,24 +1,24 @@
 /* Dark, white, transparent, and reusable label-state buttons */
 .action-button { min-height: 46px; padding: 0 20px; border: 1px solid transparent; border-radius: 16px; cursor: pointer; transition: color 650ms cubic-bezier(.2,.8,.2,1),background 650ms cubic-bezier(.2,.8,.2,1),box-shadow 650ms cubic-bezier(.2,.8,.2,1); }
-.action-button.is-dark { background: #171717; color: #fff; }
-.action-button.is-dark:hover { background: #3a3a3a; }
-.action-button.is-light { border-color: #e8e8e8; background: #fff; color: #222; }
-.action-button.is-light:hover { background: #f7f7f7; }
-.action-button.is-transparent { border-color: transparent; background: transparent; color: #555; }
-.action-button.is-transparent:hover { background: rgba(0,0,0,.035); }
-.login-button { display: block; width: 100%; min-height: 48px; margin-top: 20px; padding: 0 18px; border: 1px solid rgba(255,255,255,.08); border-radius: 16px; background: linear-gradient(180deg,#3d3d3d 0%,#191919 100%); box-shadow: 0 2px 0 #111,0 4px 8px rgba(0,0,0,.14),inset 0 1px 1px rgba(255,255,255,.2); color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 650ms cubic-bezier(.2,.8,.2,1); }
-.login-button:hover:not(:disabled) { background: linear-gradient(110deg,#3d3d3d 0%,#191919 25%,#555 50%,#191919 75%,#3d3d3d 100%); background-size: 260% 100%; animation: gradient 4.5s ease-in-out infinite; }
+.action-button.is-dark { background: var(--foreground); color: var(--white); }
+.action-button.is-dark:hover { background: var(--gray); }
+.action-button.is-light { border-color: var(--outline); background: var(--white); color: var(--foreground); }
+.action-button.is-light:hover { background: var(--surface-hover); }
+.action-button.is-transparent { border-color: transparent; background: transparent; color: var(--gray); }
+.action-button.is-transparent:hover { background: var(--surface-tint); }
+.login-button { display: block; width: 100%; min-height: 48px; margin-top: 20px; padding: 0 18px; border: 1px solid var(--glass-fill-soft); border-radius: 16px; background: linear-gradient(180deg,var(--gray) 0%,var(--foreground) 100%); box-shadow: 0 2px 0 var(--foreground),0 4px 8px var(--shadow),inset 0 1px 1px var(--glass-fill-soft); color: var(--white); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 650ms cubic-bezier(.2,.8,.2,1); }
+.login-button:hover:not(:disabled) { background: linear-gradient(110deg,var(--gray) 0%,var(--foreground) 25%,var(--gray) 50%,var(--foreground) 75%,var(--gray) 100%); background-size: 260% 100%; animation: gradient 4.5s ease-in-out infinite; }
 .login-button:active:not(:disabled) { transform: translateY(1px); }
 .login-button:disabled { cursor: default; }
-.login-button.is-loading { background: linear-gradient(110deg,#3d3d3d 0%,#191919 25%,#555 50%,#191919 75%,#3d3d3d 100%); background-size: 260% 100%; animation: gradient 4.5s ease-in-out infinite; }
-.login-button.is-complete { border-color: rgba(255,255,255,.08); background: linear-gradient(180deg,#3d3d3d 0%,#191919 100%); box-shadow: 0 2px 0 #111,0 4px 8px rgba(0,0,0,.14),inset 0 1px 1px rgba(255,255,255,.2); color: #fff; cursor: pointer; }
-.login-button.is-wallet-continue.is-complete { border:1px solid #dedede; background:#fff; box-shadow:none; color:#222; }
-.login-button.is-wallet-continue.is-complete:hover { border-color:#d7d7d7; background:#f7f7f7; }
-.login-button.is-wallet-connect:not(.is-complete) { border: 0; background: #222; box-shadow: none; }
-.login-button.is-wallet-connect:not(.is-complete):hover:not(:disabled) { border: 0; background: #3a3a3a; box-shadow: none; animation: none; }
-.login-button.is-wallet-connect.is-loading { border: 0; background: #222; box-shadow: none; animation: none; }
-.login-button.is-flat-dark { border: 0; background: #222; box-shadow: none; color: #fff; }
-.login-button.is-flat-dark:hover:not(:disabled) { border: 0; background: #3a3a3a; box-shadow: none; animation: none; }
+.login-button.is-loading { background: linear-gradient(110deg,var(--gray) 0%,var(--foreground) 25%,var(--gray) 50%,var(--foreground) 75%,var(--gray) 100%); background-size: 260% 100%; animation: gradient 4.5s ease-in-out infinite; }
+.login-button.is-complete { border-color: var(--glass-fill-soft); background: linear-gradient(180deg,var(--gray) 0%,var(--foreground) 100%); box-shadow: 0 2px 0 var(--foreground),0 4px 8px var(--shadow),inset 0 1px 1px var(--glass-fill-soft); color: var(--white); cursor: pointer; }
+.login-button.is-wallet-continue.is-complete { border:1px solid var(--outline); background:var(--white); box-shadow:none; color:var(--foreground); }
+.login-button.is-wallet-continue.is-complete:hover { border-color:var(--outline); background:var(--surface-hover); }
+.login-button.is-wallet-connect:not(.is-complete) { border: 0; background: var(--foreground); box-shadow: none; }
+.login-button.is-wallet-connect:not(.is-complete):hover:not(:disabled) { border: 0; background: var(--gray); box-shadow: none; animation: none; }
+.login-button.is-wallet-connect.is-loading { border: 0; background: var(--foreground); box-shadow: none; animation: none; }
+.login-button.is-flat-dark { border: 0; background: var(--foreground); box-shadow: none; color: var(--white); }
+.login-button.is-flat-dark:hover:not(:disabled) { border: 0; background: var(--gray); box-shadow: none; animation: none; }
 .loading-dots { display: inline-flex; margin-left: 2px; }
 .loading-dots i { font-style: normal; animation: dot-wave 900ms ease-in-out infinite; }
 .loading-dots i:nth-child(2) { animation-delay: 140ms; }

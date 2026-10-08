@@ -1,12 +1,12 @@
 /* Wallet card, envelope flap, loading, and step transition animations */
 .wallet-card { transform: translateY(0); transition: transform 550ms cubic-bezier(.2,.8,.2,1); }
 .option:hover .wallet-card { transform: translateY(-3px); }
-.email-top-flap { fill: #fff; stroke: none; transform-box: view-box; transform-origin: 12px 7px; transition: transform 550ms cubic-bezier(.2,.8,.2,1); }
+.email-top-flap { fill: var(--white); stroke: none; transform-box: view-box; transform-origin: 12px 7px; transition: transform 550ms cubic-bezier(.2,.8,.2,1); }
 .email-icon { overflow: visible; }
 .option:hover .email-top-flap { transform: scaleY(-1); }
 .option-arrow { transition: transform 650ms cubic-bezier(.2,.8,.2,1),color 650ms cubic-bezier(.2,.8,.2,1); }
-.option:hover .option-arrow { transform: translate(2px,-2px); color: #111; }
-.option:hover .icon { color: #111; }
+.option:hover .option-arrow { transform: translate(2px,-2px); color: var(--foreground); }
+.option:hover .icon { color: var(--foreground); }
 .icon { transition: color 650ms cubic-bezier(.2,.8,.2,1); }
 .spinner { animation: spin 1s linear infinite; }
 .step-content { animation: enter 700ms cubic-bezier(.2,.8,.2,1) both; }
