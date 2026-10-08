@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { WalletProvider } from "@/providers/WalletProvider";
 import { Open_Sans } from "next/font/google";
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <WalletProvider>
         {children}
       </WalletProvider>
+      <Analytics />
       </body>
     </html>
   );
