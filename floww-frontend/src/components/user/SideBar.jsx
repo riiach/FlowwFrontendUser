@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import AuthBrand from "@/components/auth/shared/AuthBrand"
 
 const menus = [
     { label: "Floww Agent", href: "/app/chat",
@@ -49,14 +48,15 @@ const SideBar = () => {
 
     return (
         <nav
-            className="w-64 h-full text-gray p-2 rounded-2xl font-semibold"
+            className="w-64 h-full text-gray rounded-2xl font-semibold"
         >
-            <Link href="/app"><AuthBrand className="mb-6" /></Link>
 
             <ul className="space-y-2">
                 {menus.map(({label, href, icon}) => {
                     const isActive = href === "/app"
                         ? pathname === href || pathname === "/app/home"
+                            || pathname === "/app/my-wallet"
+                            || pathname.startsWith("/app/my-wallet/")
                         : pathname === href || pathname.startsWith(`${href}/`)
 
                     return (

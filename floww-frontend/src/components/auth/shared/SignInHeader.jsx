@@ -5,5 +5,15 @@ function BackArrow() {
 }
 
 export default function SignInHeader({ onBack }) {
-  return <><button onClick={onBack} className="absolute right-0 top-0 hidden cursor-pointer items-center gap-2 text-sm font-medium text-black md:flex" aria-label="Go back"><BackArrow /><span>Go back</span></button><div className="mb-4 flex items-center justify-between md:mb-6"><AuthBrand /><button onClick={onBack} className="inline-flex items-center gap-1.5 text-xs font-medium text-black md:hidden" aria-label="Go back"><BackArrow /><span>Go back</span></button></div></>
+  return <>
+    <button onClick={onBack} className="absolute right-0 top-0 hidden cursor-pointer items-center gap-2 text-sm font-medium text-black md:flex" aria-label="Go back">
+      <BackArrow /><span>Go back</span>
+    </button>
+    <div className="mb-4 flex items-center justify-between md:mb-6">
+      <AuthBrand />
+      <button onClick={onBack} className="inline-flex items-center gap-1.5 text-xs font-medium text-black md:hidden" aria-label="Go back">
+        <BackArrow /><span>Go back</span>
+      </button>
+    </div>
+  </>
 }

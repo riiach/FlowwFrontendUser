@@ -35,7 +35,7 @@ export default function LoginFlow({ initialIntent = 'signin', onComplete, demoVe
           <PromoLandscape />
 
           <section id="sign-in" className={`relative order-1 flex min-h-0 items-center justify-center overflow-y-auto py-0 md:order-2 md:overflow-hidden md:pl-8 lg:pl-14 ${step === 2 ? 'step-verification' : ''}`}>
-            <div className="w-full max-w-md"><SignInHeader onBack={restart} /><div className="step-indicator-wrap mb-5 md:mb-7"><StepProgress step={step} /></div>
+            <div className="w-full max-w-md"><SignInHeader onBack={() => router.push('/')} /><div className="step-indicator-wrap mb-5 md:mb-7"><StepProgress step={step} /></div>
 
               <div key={step} className="step-content">
               {step === 1 && <SignInMethodStep intent={intent} onChoose={chooseMethod} onToggleIntent={switchAuthPage} />}

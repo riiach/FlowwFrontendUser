@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { WalletProvider } from "@/providers/WalletProvider";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
+import "../styles/surfaces.css";
 import "../styles/login-page.css";
 import "../styles/hover-animations.css"
 import "../styles/component-extras.css"
