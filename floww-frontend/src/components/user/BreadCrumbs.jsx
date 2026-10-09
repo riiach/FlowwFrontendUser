@@ -76,7 +76,7 @@ const BreadCrumbs = () => {
                         <li key={crumb.href} className="flex items-center gap-2">
                             {index > 0 && <span aria-hidden="true">&gt;</span>}
                             {isLast ? (
-                                <span aria-current="page" className="flex items-center gap-1 py-1 px-2">
+                                <span aria-current="page" className="flex items-center gap-2">
                                     {crumbs.length === 1 && crumb.icon}
                                     {crumb.label}
                                 </span>

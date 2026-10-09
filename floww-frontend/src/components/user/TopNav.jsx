@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import AuthBrand from "@/components/auth/shared/AuthBrand";
 import BreadCrumbs from "@/components/user/BreadCrumbs"
+import ProfileToggleBar from "./ProfileToggleBar"
 
 const TopNav = () => {
     return (
@@ -16,14 +17,7 @@ const TopNav = () => {
                 <BreadCrumbs />
             </div>
 
-            <Link href="/" className="size-10 rounded-full overflow-hidden relative">
-                <Image
-                    src="/default-profile-orange-v2.png"
-                    alt="profile"
-                    className="object-cover"
-                    fill
-                />
-            </Link>
+            <ProfileToggleBar />
         </div>
 
     )
