@@ -11,9 +11,9 @@ import ConnectionProgressScreen from './ConnectionProgressScreen'
 import MobileCompleteScreen from './MobileCompleteScreen'
 import MobileAuthBackgroundCard from './MobileAuthBackgroundCard'
 
-function MobileAuthExperience({ logoSrc = '/floww_logo.png', demoVerificationCode = '123456', onComplete = () => {} }) {
-  const [mode, setMode] = useState('welcome')
-  const [intent, setIntent] = useState('signin')
+function MobileAuthExperience({ initialIntent = 'signin', onSwitchAuth = () => {}, logoSrc = '/floww_logo.png', demoVerificationCode = '123456', onComplete = () => {} }) {
+  const [mode, setMode] = useState(initialIntent === 'signup' ? 'signup-method' : 'welcome')
+  const [intent, setIntent] = useState(initialIntent)
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [code, setCode] = useState('')
@@ -21,9 +21,9 @@ function MobileAuthExperience({ logoSrc = '/floww_logo.png', demoVerificationCod
   const [retrySeconds, setRetrySeconds] = useState(60)
   const [oauthProvider, setOauthProvider] = useState('')
   const to = (next) => { setNotice(''); setMode(next) }
-  const home = () => { setNotice(''); setMode('welcome'); setEmail(''); setCode('') }
+  const home = () => { if (initialIntent === 'signup' && mode === 'signup-method') { onSwitchAuth(); return }; setNotice(''); setMode(initialIntent === 'signup' ? 'signup-method' : 'welcome'); setEmail(''); setCode('') }
   const startLogin = (method) => { setIntent('signin'); setNotice(''); setMode(method) }
-  const startSignup = () => { setIntent('signup'); setNotice(''); setMode('signup-method') }
+  const startSignup = onSwitchAuth
   const sendCode = (event) => { event.preventDefault(); setCode(''); setRetrySeconds(60); setNotice(''); setMode('code') }
   const verifyCode = (value) => {
     const nextCode = value.replace(/\D/g, '').slice(0, 6)

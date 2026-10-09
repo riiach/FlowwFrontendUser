@@ -1,5 +1,6 @@
-import LoginFlow from "@/components/auth/LoginFlow";
+import { redirect } from "next/navigation";
+import { LOGIN_PATH } from "@/lib/auth/return-to";
 
 export default function HomePage() {
-  return <LoginFlow />;
+  redirect(LOGIN_PATH);
 }

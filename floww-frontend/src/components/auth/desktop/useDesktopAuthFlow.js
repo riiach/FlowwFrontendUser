@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function useDesktopAuthFlow() {
+export default function useDesktopAuthFlow(initialIntent = 'signin') {
   const [step, setStep] = useState(1)
   const [method, setMethod] = useState('')
-  const [intent, setIntent] = useState('signin')
+  const [intent, setIntent] = useState(initialIntent)
   const [walletProvider, setWalletProvider] = useState('')
   const [email, setEmail] = useState('')
   const [code, setCode] = useState('')
@@ -97,7 +97,7 @@ export default function useDesktopAuthFlow() {
     setWalletConnecting(false)
     setStep(1)
     setMethod('')
-    setIntent('signin')
+    setIntent(initialIntent)
     setWalletProvider('')
     setEmail('')
     setCode('')

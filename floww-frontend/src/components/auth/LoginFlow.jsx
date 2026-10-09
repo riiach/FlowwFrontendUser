@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from 'next/navigation'
 import useDesktopAuthFlow from './desktop/useDesktopAuthFlow'
 import StepProgress from './shared/StepProgress'
 import SessionCheck from './shared/SessionCheck'
@@ -11,8 +12,20 @@ import ConfirmationStep from './desktop/ConfirmationStep'
 import VerifyIdentityStep from './desktop/VerifyIdentityStep'
 import MobileAuthExperience from './mobile/MobileAuthExperience'
 
-export default function LoginFlow({ onComplete = () => {}, demoVerificationCode = '123456', logoSrc = '/floww_logo.png' }) {
-  const { step, method, intent, walletProvider, email, code, sent, resendSeconds, walletConnected, walletConnecting, codeError, message, setIntent, setEmail, setCode, setSent, setWalletProvider, setWalletConnected, setWalletConnecting, setMessage, setCodeError, chooseMethod, chooseWalletProvider, sendCode, connectWallet, updateCode, continueFlow, restart } = useDesktopAuthFlow()
+export default function LoginFlow({ initialIntent = 'signin', onComplete, demoVerificationCode = '123456', logoSrc = '/floww_logo.png' }) {
+  const { step, method, intent, walletProvider, email, code, sent, resendSeconds, walletConnected, walletConnecting, codeError, message, setEmail, setCode, setSent, setWalletProvider, setWalletConnected, setWalletConnecting, setMessage, setCodeError, chooseMethod, chooseWalletProvider, sendCode, connectWallet, updateCode, continueFlow, restart } = useDesktopAuthFlow(initialIntent)
+
+  const router = useRouter()
+  const handleComplete = () => {
+    if (onComplete) {
+      onComplete()
+      return
+    }
+
+    router.push('/app')
+    router.refresh()
+  }
+  const switchAuthPage = () => router.push((initialIntent === 'signup' ? '/login' : '/signup') + window.location.search)
 
   return (
     <main className="login-screen bg-white font-sans text-slate-950">
@@ -25,20 +38,20 @@ export default function LoginFlow({ onComplete = () => {}, demoVerificationCode 
             <div className="w-full max-w-md"><SignInHeader onBack={restart} /><div className="step-indicator-wrap mb-5 md:mb-7"><StepProgress step={step} /></div>
 
               <div key={step} className="step-content">
-              {step === 1 && <SignInMethodStep intent={intent} onChoose={chooseMethod} onToggleIntent={() => { setIntent(intent === 'signup' ? 'signin' : 'signup'); setMessage('') }} />}
+              {step === 1 && <SignInMethodStep intent={intent} onChoose={chooseMethod} onToggleIntent={switchAuthPage} />}
 
               {step === 2 && <VerifyIdentityStep method={method} intent={intent} walletProvider={walletProvider} walletConnected={walletConnected} walletConnecting={walletConnecting} email={email} onEmailChange={(value) => { setEmail(value); setSent(false); setCode(''); setMessage(''); setCodeError(false) }} onSendCode={sendCode} sent={sent} code={code} onCodeChange={updateCode} resendSeconds={resendSeconds} onRetry={sendCode} message={message} codeError={codeError} onChooseWallet={chooseWalletProvider} onContinue={continueFlow} onConnectWallet={connectWallet} onBack={method === 'wallet' && walletProvider ? () => { setWalletProvider(''); setWalletConnected(false); setWalletConnecting(false); setMessage('') } : restart} />}
 
               {step === 3 && <SessionCheck />}
 
-              {step === 4 && <ConfirmationStep detail={method === 'email' ? email : 'Wallet connection verified'} onContinue={onComplete} onRestart={restart} />}
+              {step === 4 && <ConfirmationStep detail={method === 'email' ? email : 'Wallet connection verified'} onContinue={handleComplete} onRestart={restart} />}
               </div>
               <SecureSignInNote />
             </div>
           </section>
         </div>
       </div>
-      <MobileAuthExperience logoSrc={logoSrc} demoVerificationCode={demoVerificationCode} onComplete={onComplete} />
+      <MobileAuthExperience initialIntent={initialIntent} onSwitchAuth={switchAuthPage} logoSrc={logoSrc} demoVerificationCode={demoVerificationCode} onComplete={handleComplete} />
     </main>
   )
 }

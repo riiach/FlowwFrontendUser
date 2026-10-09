@@ -10,6 +10,9 @@ import { LOGIN_PATH, RETURN_TO_PARAM } from "@/lib/auth/return-to";
  * 세션 쿠키는 expires가 세션 만료 시각이라 만료되면 브라우저가 먼저 지운다.
  */
 export function proxy(request: NextRequest) {
+    // Temporarily allow all app pages during local UI development.
+    // Remove this condition when restoring the login requirement.
+    if (process.env.NODE_ENV === "development") return NextResponse.next();
     if (request.cookies.has(SESSION_COOKIE_NAMES.session)) return NextResponse.next();
 
     const login = new URL(LOGIN_PATH, request.url);
