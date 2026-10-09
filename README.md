@@ -3,6 +3,8 @@
 > A portfolio frontend for **Floww**, the AI Agent Blockchain Wallet project our team built at **GWDC HACKATHON 26**. I’m rebuilding the frontend as a standalone project to keep learning and exploring. 🛍️🤖🔗
 
 <img width="3840" height="2160" alt="auth_preview" src="https://github.com/user-attachments/assets/7610b3d3-2614-485c-8a0e-d712abefbd45" />
+<img width="1592" height="822" alt="chrome_wSdbvAhteN" src="https://github.com/user-attachments/assets/5708fad0-e169-4d89-a582-b88414bea139" />
+
 
 ## 🌐 Live Preview
 
