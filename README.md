@@ -106,7 +106,8 @@ For API contracts and implementation details, see [Floww_Server](https://github.
 Blog posts I wrote on this project:
 
 - [Step Indicator Tutorial](https://riachoi-services.vercel.app/blog/frontend-step-indicator-tutorial)
-- Coming Soon! GWDC HACKATHON 2026 Recap
+- [GWDC HACKATHON 2026 Recap](https://riachoi-services.vercel.app/blog/three-days-five-people-one-plan-my-gwdc-hackathon-story)
+- [Bread Crumb Tutorial](https://riachoi-services.vercel.app/blog/bread-crumb-tutorial)
 - Coming Soon! Making Safe Browser Connection with Crypto Wallet: BFF Backend for Frontend and Connection Flow
 - Coming Soon! How to mock server from frontend - Vitest
 
