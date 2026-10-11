@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function SignupPage() {
-  return <LoginFlow key="signup" initialIntent="signup" />;
+  return <LoginFlow key="signup" initialIntent="signup" onComplete={undefined} />;
 }
