@@ -58,7 +58,7 @@ function readUpstream(source: Source): UpstreamMode {
 /**
  * 서버 origin 검증.
  * - https는 어떤 호스트든 허용, http는 localhost / 127.0.0.1 / [::1]만 허용
- * - 경로·쿼리·해시·계정 정보 없이 origin만 (예: https://floww-server-demo.vercel.app)
+ * - 경로·쿼리·해시·계정 정보 없이 origin만 (예: https://floww-server-modification.vercel.app)
  */
 function readApiBaseUrl(source: Source): string | null {
     const name = "FLOWW_API_BASE_URL";

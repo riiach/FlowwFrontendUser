@@ -26,8 +26,8 @@ describe("FLOWW_UPSTREAM", () => {
 
 describe("FLOWW_API_BASE_URL", () => {
     it("https 주소와 localhost http를 허용하고 끝 슬래시를 정리한다", () => {
-        expect(readServerEnv({ FLOWW_API_BASE_URL: "https://floww-server-demo.vercel.app/" }).apiBaseUrl)
-            .toBe("https://floww-server-demo.vercel.app");
+        expect(readServerEnv({ FLOWW_API_BASE_URL: "https://floww-server-modification.vercel.app/" }).apiBaseUrl)
+            .toBe("https://floww-server-modification.vercel.app");
         expect(readServerEnv({ FLOWW_API_BASE_URL: "http://localhost:8080" }).apiBaseUrl)
             .toBe("http://localhost:8080");
         expect(readServerEnv({ FLOWW_API_BASE_URL: "http://127.0.0.1:8080" }).apiBaseUrl)

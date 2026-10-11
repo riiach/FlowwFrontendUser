@@ -23,7 +23,7 @@ The dashboard and AI Chat screens are not implemented yet. For now, this project
 One of the GWDC HACKATHON 26 challenges was **“Build a Financial Service Powered by AI Agents and Blockchain.”** Our team built **Floww**, a shopping service that uses an AI Agent and a blockchain wallet to propose shopping tasks for users to review and approve. The server side includes flows for task drafts, quotes, user approvals, and AI proposals. 🧾
 
 - [GWDC HACKATHON 2026 challenge brief](https://www.gwdc.net/hackathon.html)
-- [Floww server repository](https://github.com/web5five/Floww_Server)
+- [Floww server repository](https://github.com/riiach/Floww_Server)
 - [Floww frontend repository](https://github.com/riiach/FlowwFrontendUser)
 
 ## 💭 Why I Rebuilt the Frontend
@@ -95,7 +95,7 @@ The browser calls same-origin BFF routes. Main endpoints include `POST /api/chat
 
 Amounts are sent as integer strings, and fUSDC uses six decimal places. An AI proposal may reuse an existing allowed attempt. **These API flows do not execute payments.** The mock server is for a single-browser demo and is not durable or designed for concurrent use.
 
-For API contracts and implementation details, see [Floww_Server](https://github.com/web5five/Floww_Server) and the existing project documentation.
+For API contracts and implementation details, see [Floww_Server](https://github.com/riiach/Floww_Server) and the existing project documentation.
 
 ## 💳 How Wallet Mandates Work
 <img width="2430" height="2294" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/0129e077-a4cd-4a90-af72-249b50f29ebf" />
