@@ -7,7 +7,7 @@ export interface LocalizedMessage {
 }
 
 /**
- * Floww 서버 공통 에러 응답 (ErrorResponse.java, Floww_Server f729b0e)
+ * Floww 서버 공통 에러 응답 (ErrorResponse.java, riiach/Floww_Server f729b0e)
  * GlobalExceptionHandler와 인증 필터가 모두 이 모양으로 보낸다.
  * null 필드도 생략하지 않는다.
  */

@@ -2,7 +2,7 @@
  * AI 초안 타입 — POST /api/ai/drafts (서버 계약)
  *
  * 대화를 보내면 서버(Kiln 모델)가 Mandate 초안을 만들어 돌려준다.
- * Floww_Server f729b0e 기준: AiDraftHttpController, AiDraftAdapter, AiDraftPreflight
+ * riiach/Floww_Server f729b0e 기준: AiDraftHttpController, AiDraftAdapter, AiDraftPreflight
  *
  * 주의: 이 초안은 사람이 읽는 형식이라 Task 생성 형식과 다르다.
  *       itemScope → itemId, amount → maxAmountBaseUnits 변환은 BFF(domain/draft)가 한다.

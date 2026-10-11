@@ -5,7 +5,7 @@ import type { ServerErrorResponse } from "./api";
  *
  * 두 구간을 나눠서 정의한다.
  *  1) Server contract — BFF ↔ Floww Server (/api/v1/auth/wallet/*)
- *     Floww_Server f729b0e 기준: WalletSigninController, WalletSigninService,
+ *     riiach/Floww_Server f729b0e 기준: WalletSigninController, WalletSigninService,
  *     WalletSigninInputs, SigninResponse, UserResponse
  *  2) Browser contract — 브라우저 ↔ BFF (/api/wallet-auth/*)
  *     JWT(accessToken)는 절대 브라우저로 내려가지 않는다.
